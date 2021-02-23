@@ -22,6 +22,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public void springHandleNotFound(HttpServletResponse response) throws IOException {
+        response.sendError(HttpStatus.NOT_FOUND.value());
+    }
+
     // error handle for @Valid
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,

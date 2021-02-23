@@ -25,6 +25,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Participante extends BaseEntity {
 
+    public Participante(String nome2, String email2, String observacoes2, int i) {
+    }
+
     @Column(name = "nome", nullable = false)
     private String nome;
 
@@ -35,7 +38,7 @@ public class Participante extends BaseEntity {
     private String observacoes;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "turma_id", nullable = false, foreignKey = @ForeignKey(name = "fk_partcipantes_turmas_id"))
 
     private Turma turma;
