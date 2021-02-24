@@ -75,8 +75,8 @@ public class ParticipanteController {
     }
 
     @GetMapping("/participantes/all")
-    public Page<Turma> getTurmas(Pageable pageable) {
-        return turmaRepository.findAll(pageable);
+    public Page<Participante> getAllParticipantes(Pageable pageable) {
+        return participanteRepository.findAll(pageable);
     }
 
 }
