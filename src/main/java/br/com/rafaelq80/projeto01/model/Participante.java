@@ -37,7 +37,7 @@ public class Participante extends BaseEntity {
     private String observacoes;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "turma_id", nullable = false, foreignKey = @ForeignKey(name = "fk_partcipantes_turmas_id"))
 
     private Turma turma;

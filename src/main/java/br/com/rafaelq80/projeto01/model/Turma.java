@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -34,8 +32,8 @@ public class Turma extends BaseEntity {
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
-    @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "turma")
+    // @JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "turma")
     @Builder.Default
     private List<Participante> participantes = new ArrayList<>();
 

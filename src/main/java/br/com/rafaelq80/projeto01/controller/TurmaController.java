@@ -29,9 +29,11 @@ import lombok.RequiredArgsConstructor;
 public class TurmaController {
 
     private final TurmaRepository turmaRepository;
+    // private final ParticipanteRepository participanteRepository;
 
     @GetMapping("/turmas")
     public Page<Turma> getAllTurmas(Pageable pageable) {
+
         return turmaRepository.findAll(pageable);
     }
 
