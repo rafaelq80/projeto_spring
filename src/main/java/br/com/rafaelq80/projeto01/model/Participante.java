@@ -1,68 +1,55 @@
 package br.com.rafaelq80.projeto01.model;
 
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.persistence.CascadeType;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "participantes")
-@Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Participante extends BaseEntity {
+
+public class Participante extends BaseEntity implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "nome", nullable = false)
     private String nome;
 
     @Column(name = "email", nullable = false)
+    @Email
     private String email;
 
     @Column(name = "observacoes", nullable = false)
     private String observacoes;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "turma_id", nullable = false, foreignKey = @ForeignKey(name = "fk_partcipantes_turmas_id"))
+    @JsonManagedReference
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "participante")
+    @Builder.Default
 
-    private Turma turma;
-
-    @Override
-    public String toString() {
-        return "{" + " nome='" + getNome() + "'" + ", email='" + getEmail() + "'" + ", observacoes='" + getObservacoes()
-                + "'" + ", turma='" + getTurma() + "'" + "}";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Participante)) {
-            return false;
-        }
-        Participante participante = (Participante) o;
-        return Objects.equals(nome, participante.nome) && Objects.equals(email, participante.email)
-                && Objects.equals(observacoes, participante.observacoes) && Objects.equals(turma, participante.turma);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(nome, email, observacoes, turma);
-    }
+    private List<Turma> turmas = new ArrayList<>();
 
 }
