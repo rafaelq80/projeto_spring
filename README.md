@@ -24,23 +24,23 @@ API Rest, baseada nas classes Turma e Participante, desenvolvidos na linguagem J
 
 ### Participante
 
-PUT: ​/participantes​/{participanteId}
-DELETE: ​/participantes​/{participanteId}
-GET: ​/participantes
-POST: ​/participantes
-GET: ​/participantes​/nome​/{participanteNome}
-GET: ​/participantes​/id​/{participanteId}
+- PUT: ​/participantes​/{participanteId}
+- DELETE: ​/participantes​/{participanteId}
+- GET: ​/participantes
+- POST: ​/participantes
+- GET: ​/participantes​/nome​/{participanteNome}
+- GET: ​/participantes​/id​/{participanteId}
 
 ### Turma
 
-PUT: ​/participantes​/{participanteId}​/turmas​/{turmaId}
-DELETE: ​/participantes​/{participanteId}​/turmas​/{turmaId}
-GET: ​/participantes​/{participanteId}​/turmas
-POST: ​/participantes​/{participanteId}​/turmas
-GET: ​/turmas​/participantes​/all
-GET: ​/turmas​/id​/{turmaId}
-GET: ​/turmas​/descricao​/{turmaDescricao}
-GET: ​/turmas​/all
+- PUT: ​/participantes​/{participanteId}​/turmas​/{turmaId}
+- DELETE: ​/participantes​/{participanteId}​/turmas​/{turmaId}
+- GET: ​/participantes​/{participanteId}​/turmas
+- POST: ​/participantes​/{participanteId}​/turmas
+- GET: ​/turmas​/participantes​/all
+- GET: ​/turmas​/id​/{turmaId}
+- GET: ​/turmas​/descricao​/{turmaDescricao}
+- GET: ​/turmas​/all
 
 ## Licença
 
